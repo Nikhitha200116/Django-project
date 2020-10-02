@@ -1,0 +1,53 @@
+{% extends 'info/base.html' %}
+    {% load static %}
+
+    {% block content %}
+                  <div class="card mb-3">
+            <div class="card-header">
+              <i class="fas fa-table"></i>
+            <b>Marks</b></div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                        <th>Course ID</th>
+                        <th>Course Name</th>
+                        <th>Total Internal 1 Marks</th>
+                        <th>Total Internal 2 Marks</th>
+                        
+                    </tr>
+                  </thead>
+                  <tbody>
+                     {% for sc in sc_list %}
+                    <tr>
+                       <td>{{ sc.course_id }}</td>
+                       <td>{{sc.course.name}}</td>
+                      
+                        {% if sc.get_cie <= 12 or sc.get_result <= 12 %}
+                          <td class=" bg-danger text-white">{{ m.marks1 }} <p  class="text-dark">Failed</p></td>
+                        {% else %}
+                          <td class=" bg-success text-white">{{ m.marks1 }}<p  class="text-white">Passed</p></td>
+                        {% endif %}
+
+                        {% if sc.get_result <= 12 %}
+                            <td class="p-3 mb-2 bg-danger text-white">{{ m1.marks1 }} <p  class="text-white">Failed</p></td>
+                        {% else %}
+                            <td class="p-3 mb-2 bg-success text-white">{{ m1.marks1 }} <p  class="text-white" font-size="100px">Passed</p></td>
+                        {% endif %}
+                        
+                       
+
+                    </tr>
+                    {% empty %}
+                            <p>student has no courses</p>
+                    {% endfor %}
+
+                  </tbody>
+                </table>  
+              </div>
+            </div>
+          </div>
+
+
+    {% endblock %}

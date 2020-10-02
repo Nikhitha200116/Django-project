@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>homepage</title>
+      {% load static %}
+    <style>
+         marquee{
+      font-size: 50px;
+      font-weight: 500;
+      color: #00FF00;
+      font-family: sans-serif;
+      }
+      body{
+        background-color:'rosybrown';
+      }
+       .button {
+       padding: 15px 25px;
+       font-size: 24px;
+       text-align: center;
+       cursor: pointer;
+       outline: none;
+      color: #fff;
+       background-color: #4CAF50;
+       border: none;
+       border-radius: 15px;
+       box-shadow: 0 9px #999;
+      }
+
+     .button:hover {background-color: #3e8e41}
+
+    .button:active {
+        background-color: #3e8e41;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+       }
+    </style>
+    <!-- Bootstrap core CSS -->
+      <link href="{% static '/info/homepage/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+      <link href="{% static '/info/homepage/css/heroic-features.css' %}" rel="stylesheet">
+      <link href="{% static '/info/bootstrap/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+  </head>
+
+  <body background="{% static 'info/images/bg.jpg' %}">
+    <img  align="right" src="{% static 'info/images/img-01.png' %}" alt="" height="220" width="220">
+    
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color:blue">
+  
+    
+     <marquee>Welcome to {{ request.user.student.name }} </marquee>
+     <marquee><a class="navbar-brand" href="{% url 'index' %}">College Internals Result Analysis Portal</a></marquee>
+       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link text-capitalize">{{ request.user.student.name }}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal" style="background-color:red">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  
+  
+  
+    <div class="container" style="background-color:powderblue">
+     
+      <!-- Jumbotron Header -->
+      <header class="jumbotron my-4" style="background-color:black" width="200" height="10" >
+        <h3 class="display-3 text-capitalize" style="color:Tomato">Welcome to  Student Dashboard</h3>    
+         <marquee><a class="navbar-brand" href="{% url 'login' %}"><b>New update</b></a></marquee>
+      </header>
+
+      
+      <div class="row text-center">
+        <div class="col-lg-3 col-md-6 mb-4" >
+          <div class="card">
+              <a href="{% url 'marks_list' request.user.student.Rollno %}">
+                <img class="card-img-top" src="{% static 'info/images/marks.jpg' %}" alt="">
+              </a>
+              <div class="card-body">
+              <h4 class="card-title">Marks</h4>
+              <p class="card-text">View the marks obtained for each of your courses. These include the marks of 2
+                  internal exams which are calculated for 15 marks each and quiz for 10 marks and Assignment for 5 marks.  </p>
+              </div>
+            <div class="card-footer">
+                <a class="btn btn-success" role="button" href="{% url 'marks_list' request.user.student.Rollno %}">View Marks</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card">
+              <a href="{% url 'timetable' request.user.student.class_id_id %}">
+                <img class="card-img-top" src="{% static 'info/images/timetable.png' %}" alt="">
+              </a>
+              <div class="card-body">
+              <h4 class="card-title">TimeTable</h4>
+              <p class="card-text">View the timetable in a tabular form. The timetable displays all the  courses of the
+                  student and the time and day at which remedial subjects courses they are conducted.</p>
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-success" role="button" href="{% url 'timetable' request.user.student.class_id_id %}">View TimeTable</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4" >
+          <div class="card">
+              <a href="{% url 'marks_feedback' request.user.student.Rollno %}">
+                <img class="card-img-top" src="{% static 'info/images/reports.png' %}" alt="">
+              </a>
+              <div class="card-body">
+              <h4 class="card-title">Check Status</h4>
+              <p class="card-text">View the status of your result of each individual exam  </p>
+              </div>
+            <div class="card-footer">
+                <a class="btn btn-success" role="button" href="{% url 'marks_feedback' request.user.student.Rollno %}">View Status</a>
+            </div>
+          </div>
+        </div>
+       
+
+        
+     
+
+      </div>
+
+
+    </div>
+  
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <a class="btn btn-danger" href="/accounts/logout">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+      <script src="{% static '/info/homepage/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static '/info/homepage/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  </body>
+
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <style>
+      p.solid {border-style: solid;
+        font-size:10px;}
+      body {
+      color:#FF0000;
+      font-family: "Sofia";
+      font-size: 22px;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+       }
+            marquee{
+      font-size: 50px;
+      font-weight: 600;
+      font-style: italic;
+      color: #000000;
+      font-family: sans-serif, "Helvetica Neue", "Lucida Grande", Arial;
+      
+      }
+      .forgot-password {
+      text-align: left;
+      float: left;
+      font-size: 5px;
+    }
+
+    </style>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Login</title>
+
+      {% load static %}
+
+    <!-- Bootstrap core CSS-->
+    <link href="{% static '/info/bootstrap/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom fonts for this template-->
+    <link href="{% static '/info/bootstrap/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template-->
+    <link href="{% static '/info/bootstrap/css/sb-admin.css' %}" rel="stylesheet">
+    
+  </head>
+   <body  class="container-fluid" background="{% static 'info/images/simple.jpg' %}" >
+     <img  class="solid" src="{% static 'info/images/logo2.jpg' %}"  align="left" alt="" width="130" height="130">
+
+      <nav class="navbar navbar-expand-sm" color-on-scroll="100" id="sectionsNav" style="background-color:white"  width="150" height="150">
+    <div class="container" style="background-color:white" width="150" height="150">
+      <div class="navbar-translate">
+        <a class="navbar-brand" href="{% url 'login' %}" style="color:Tomato;"></a>
+          <marquee>College Internal-Examination Result Portal</marquee>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
+        </button> 
+      </div>
+      
+    </div>
+  </nav>
+  <!-- <div class="w3-container"> -->
+  <div class="page-header "  >
+    <div class="container" >
+      <div class="row">
+        <div class="col-lg-4 col-lg-6 ml-auto mr-auto"> 
+          <div class="card card-login">
+            <form class="form" method="POST" action="">
+              {% csrf_token %}
+              <div class="card-header card-header-dark text-center" style="background-color:red">
+                <h4 class="card-title">Login</h4>
+              </div>
+              <p class="description text-center" style="color:blue;">Into our Exam Results Portal</p>
+              <div class="card-body">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="material-icons">username</i>
+                      
+                    </span>
+                  </div>
+                  <div class="col-lg-7">
+                    {{ form.username }}
+                    {{ form.username.errors }}
+                  </div>
+                </div>
+                <br>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="material-icons">password</i>
+                      
+                    </span>
+                  </div>
+                  <div class="col-md-4">
+                    {{ form.password }}
+                    {{ form.password.errors }}
+                  </div>
+                </div>
+               
+                
+                <div class="footer text-center">
+                <button class="btn btn-success" type="submit" align="center">Login</button>
+                </div>
+            </form>
+          </div>
+        </div> 
+      </div>
+    </div>
+  </div>
+    <!-- Bootstrap core JavaScript-->
+    <script src="{% static '/info/bootstrap/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static '/info/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{% static '/info/bootstrap/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+  </body>
+
+</html>

@@ -1,0 +1,43 @@
+{% extends 'info/base.html' %}
+{% block content %}
+    <h1>List of Courses for Remedial Classes</h1>
+    <div class="card mb-5" style="background-color: darkkhaki">
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0" >
+                  <thead>
+                  	<tr>
+                  	  <th>Department</th>
+                  	  <th>Course</th>
+                  	</tr>
+                  	</thead>
+                  	<tbody>
+                  		  {% for ass in assign1.assign_set.all %}
+                  		 <tr>
+                  		   <td>{{ ass.class_id }}</td>
+                           <td>{{ ass.course }}</td>
+                           <td>{{ass.teacher}}</td>
+                           <td>
+                            {% if choice == 1 %}
+
+
+                                <a class="btn btn-danger" href="{% url 't_student' ass.id %}">View Students</a>
+
+                            {% elif choice == 2 %}
+                                <a class="btn btn-primary" href="{% url 't_marks_list' ass.id %}" role="button">Enter Marks</a>
+                                <a class="btn btn-danger" href="{% url 't_student_marks' ass.id %}">View Students</a>
+                            {% elif choice == 3 %}
+                                <a class="btn btn-danger" href="{% url 't_report' ass.id %}">Generate reports</a>
+                            {% endif %}
+
+                            </td>
+                         </tr>
+                    {% empty %}
+                            <p>teacher has no courses</p>
+                    {% endfor %}
+
+                  </tbody>
+                </table>
+              </div>
+    </div>
+{% endblock %}
